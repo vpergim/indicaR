@@ -87,15 +87,15 @@ disponibles y la información básica asociada a cada uno.</p>
 <code class="sourceCode R"><span><span class="va">indicadores</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/listar_indicadores.html">listar_indicadores</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">indicadores</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 6</span></span></span>
-<span><span class="co">#&gt;   id_dataset                    variable comentarios operacion organismo periodo</span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> CCAA_SEXO_A_01                ESPERAN… <span style="color: #BB0000;">NA</span>          Indicado… INE       1975-2…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> CCAA_SEXO_A_02                ESPERAN… <span style="color: #BB0000;">NA</span>          Indicado… INE       1975-2…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> CCAA_SEXO_EDAD_A_01           TASA DE… En el item… Tablas d… INE       1991-2…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> CCAA_SEXO_EDAD_A_02           ESPERAN… En el item… Tablas d… INE       1991-2…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> CCAA_SEXO_EDAD_NIVELEDUCATIV… ESPERAN… <span style="color: #BB0000;">NA</span>          Indicado… INE       2016-2…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> CV_SECT1_TAMANYOEMP_A_01      EMPRESA… <span style="color: #BB0000;">NA</span>          DIRCE     INE       2020-2…</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 5</span></span></span>
+<span><span class="co">#&gt;   id_dataset                         variable        operacion organismo periodo</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> CCAA_SEXO_A_01                     ESPERANZA DE V… Indicado… INE       1975-2…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> CCAA_SEXO_A_02                     ESPERANZA DE V… Indicado… INE       1975-2…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> CCAA_SEXO_EDAD_A_01                TASA DE MORTAL… Tablas d… INE       1991-2…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> CCAA_SEXO_EDAD_A_02                ESPERANZA DE V… Tablas d… INE       1991-2…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> CCAA_SEXO_EDAD_NIVELEDUCATIVO_A_01 ESPERANZA DE V… Indicado… INE       2016-2…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> CV_SECT1_TAMANYOEMP_A_01           EMPRESAS por s… DIRCE     INE       2020-2…</span></span></code></pre></div>
 <p>La columna <code>id_dataset</code> contiene el identificador que debe
 utilizarse en las demás funciones de consulta.</p>
 </div>
@@ -107,10 +107,10 @@ contenido de un indicador.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/info_indicador.html">info_indicador</a></span><span class="op">(</span><span class="st">"TERRITORIO_SEXO_EDAD_A_01"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $metadata</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 7</span></span></span>
-<span><span class="co">#&gt;   id_dataset              variable comentarios operacion organismo periodo url  </span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> TERRITORIO_SEXO_EDAD_A… POBLACI… <span style="color: #BB0000;">NA</span>          AGENDA20… INE       2015-2… http…</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 5</span></span></span>
+<span><span class="co">#&gt;   id_dataset                variable                 operacion organismo periodo</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> TERRITORIO_SEXO_EDAD_A_01 POBLACIÓN QUE ESTUDIA F… AGENDA20… INE       2015-2…</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $n_observaciones</span></span>
 <span><span class="co">#&gt; [1] 880</span></span>
@@ -282,7 +282,7 @@ consultarse su ayuda, por ejemplo:</p>
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Virgilio Pérez.</p>
+  <p>Developed by Virgilio Pérez, Cristina Aybar, Jose M. Pavía.</p>
 </div>
 
 <div class="pkgdown-footer-right">

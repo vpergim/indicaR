@@ -82,32 +82,39 @@
 <div class="section level3">
 <h3 id="indicadores-disponibles">Indicadores disponibles<a class="anchor" aria-label="anchor" href="#indicadores-disponibles"></a>
 </h3>
-<p><code><a href="reference/listar_indicadores.html">listar_indicadores()</a></code> permite consultar el catálogo de indicadores:</p>
+<p><code><a href="reference/listar_indicadores.html">listar_indicadores()</a></code> permite consultar el catálogo de indicadores.</p>
+<p>La columna <code>id_dataset</code> contiene el identificador utilizado por el resto de funciones de consulta.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">indicadores</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/listar_indicadores.html">listar_indicadores</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">indicadores</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 6 × 6</span></span>
-<span><span class="co">#&gt;   id_dataset                         variable comentarios operacion organismo periodo</span></span>
-<span><span class="co">#&gt;   &lt;chr&gt;                              &lt;chr&gt;    &lt;chr&gt;       &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;  </span></span>
-<span><span class="co">#&gt; 1 CCAA_SEXO_A_01                     ESPERAN… &lt;NA&gt;        Indicado… INE       1975-2…</span></span>
-<span><span class="co">#&gt; 2 CCAA_SEXO_A_02                     ESPERAN… &lt;NA&gt;        Indicado… INE       1975-2…</span></span>
-<span><span class="co">#&gt; 3 CCAA_SEXO_EDAD_A_01                TASA DE… En el item… Tablas d… INE       1991-2…</span></span>
-<span><span class="co">#&gt; 4 CCAA_SEXO_EDAD_A_02                ESPERAN… En el item… Tablas d… INE       1991-2…</span></span>
-<span><span class="co">#&gt; 5 CCAA_SEXO_EDAD_NIVELEDUCATIVO_A_01 ESPERAN… &lt;NA&gt;        Indicado… INE       2016-2…</span></span>
-<span><span class="co">#&gt; 6 CV_SECT1_TAMANYOEMP_A_01           EMPRESA… &lt;NA&gt;        DIRCE     INE       2020-2…</span></span></code></pre></div>
-<p>La columna <code>id_dataset</code> contiene el identificador utilizado por el resto de funciones de consulta.</p>
+<span><span class="co">#&gt; # A tibble: 6 × 5</span></span>
+<span><span class="co">#&gt;   id_dataset                         variable             operacion organismo periodo</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;                              &lt;chr&gt;                &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;  </span></span>
+<span><span class="co">#&gt; 1 CCAA_SEXO_A_01                     ESPERANZA DE VIDA a… Indicado… INE       1975-2…</span></span>
+<span><span class="co">#&gt; 2 CCAA_SEXO_A_02                     ESPERANZA DE VIDA a… Indicado… INE       1975-2…</span></span>
+<span><span class="co">#&gt; 3 CCAA_SEXO_EDAD_A_01                TASA DE MORTALIDAD … Tablas d… INE       1991-2…</span></span>
+<span><span class="co">#&gt; 4 CCAA_SEXO_EDAD_A_02                ESPERANZA DE VIDA p… Tablas d… INE       1991-2…</span></span>
+<span><span class="co">#&gt; 5 CCAA_SEXO_EDAD_NIVELEDUCATIVO_A_01 ESPERANZA DE VIDA p… Indicado… INE       2016-2…</span></span>
+<span><span class="co">#&gt; 6 CV_SECT1_TAMANYOEMP_A_01           EMPRESAS por sector… DIRCE     INE       2020-2…</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="información-sobre-un-indicador">Información sobre un indicador<a class="anchor" aria-label="anchor" href="#informaci%C3%B3n-sobre-un-indicador"></a>
 </h3>
+<p>La función devuelve información sobre:</p>
+<ul>
+<li>los metadatos del indicador;</li>
+<li>el número de observaciones;</li>
+<li>la cobertura temporal;</li>
+<li>las dimensiones disponibles.</li>
+</ul>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/info_indicador.html">info_indicador</a></span><span class="op">(</span><span class="st">"TERRITORIO_SEXO_EDAD_A_01"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $metadata</span></span>
-<span><span class="co">#&gt; # A tibble: 1 × 7</span></span>
-<span><span class="co">#&gt;   id_dataset                variable    comentarios operacion organismo periodo url  </span></span>
-<span><span class="co">#&gt;   &lt;chr&gt;                     &lt;chr&gt;       &lt;chr&gt;       &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;   &lt;chr&gt;</span></span>
-<span><span class="co">#&gt; 1 TERRITORIO_SEXO_EDAD_A_01 POBLACIÓN … &lt;NA&gt;        AGENDA20… INE       2015-2… http…</span></span>
+<span><span class="co">#&gt; # A tibble: 1 × 5</span></span>
+<span><span class="co">#&gt;   id_dataset                variable                      operacion organismo periodo</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;                     &lt;chr&gt;                         &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;  </span></span>
+<span><span class="co">#&gt; 1 TERRITORIO_SEXO_EDAD_A_01 POBLACIÓN QUE ESTUDIA FORMAC… AGENDA20… INE       2015-2…</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $n_observaciones</span></span>
 <span><span class="co">#&gt; [1] 880</span></span>
@@ -136,19 +143,18 @@
 <span><span class="co">#&gt; 9         edad_min         2</span></span>
 <span><span class="co">#&gt; 10        edad_max         2</span></span>
 <span><span class="co">#&gt; 11       edad_tipo         1</span></span></code></pre></div>
-<p>La función devuelve información sobre:</p>
-<ul>
-<li>los metadatos del indicador;</li>
-<li>el número de observaciones;</li>
-<li>la cobertura temporal;</li>
-<li>las dimensiones disponibles.</li>
-</ul>
 </div>
 <div class="section level3">
 <h3 id="valores-disponibles">Valores disponibles<a class="anchor" aria-label="anchor" href="#valores-disponibles"></a>
 </h3>
 <p>Antes de realizar una consulta puede comprobarse qué valores contiene una dimensión:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="reference/valores_indicador.html">valores_indicador</a></span><span class="op">(</span></span>
+<span>  <span class="st">"TERRITORIO_SEXO_EDAD_A_01"</span>,</span>
+<span>  <span class="st">"sexo"</span></span>
+<span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "Hombres" "Mujeres"</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/valores_indicador.html">valores_indicador</a></span><span class="op">(</span></span>
 <span>  <span class="st">"TERRITORIO_SEXO_EDAD_A_01"</span>,</span>
 <span>  <span class="st">"edad"</span></span>
@@ -158,7 +164,8 @@
 <div class="section level3">
 <h3 id="obtener-los-datos">Obtener los datos<a class="anchor" aria-label="anchor" href="#obtener-los-datos"></a>
 </h3>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<p><code><a href="reference/consultar_indicador.html">consultar_indicador()</a></code> devuelve un <code>data.frame</code> que puede utilizarse posteriormente con cualquier herramienta de R.</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">datos</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/consultar_indicador.html">consultar_indicador</a></span><span class="op">(</span></span>
 <span>  <span class="st">"TERRITORIO_SEXO_EDAD_A_01"</span>,</span>
 <span>  sexo <span class="op">=</span> <span class="st">"Mujeres"</span>,</span>
@@ -180,8 +187,13 @@
 <span><span class="co">#&gt; #   provincia &lt;chr&gt;, sexo &lt;chr&gt;, edad &lt;chr&gt;, edad_min &lt;int&gt;, edad_max &lt;int&gt;,</span></span>
 <span><span class="co">#&gt; #   edad_tipo &lt;chr&gt;, periodo &lt;chr&gt;, anyo &lt;int&gt;, trimestre &lt;int&gt;, mes &lt;int&gt;,</span></span>
 <span><span class="co">#&gt; #   valor &lt;dbl&gt;</span></span></code></pre></div>
-<p><code><a href="reference/consultar_indicador.html">consultar_indicador()</a></code> devuelve un <code>data.frame</code> que puede utilizarse posteriormente con cualquier herramienta de R.</p>
 </div>
+</div>
+<div class="section level2">
+<h2 id="fuentes-de-los-datos">Fuentes de los datos<a class="anchor" aria-label="anchor" href="#fuentes-de-los-datos"></a>
+</h2>
+<p>Los indicadores distribuidos por <code>indicaR</code> proceden de distintas fuentes. El organismo responsable y la operación estadística correspondiente, en su caso, se conservan en los metadatos asociados a cada indicador.</p>
+<p><code>indicaR</code> transforma y homogeneiza estos datos para facilitar su consulta y visualización. La inclusión de los datos en el paquete no implica que <code>indicaR</code> sea su fuente original.</p>
 </div>
 <div class="section level2">
 <h2 id="visualización">Visualización<a class="anchor" aria-label="anchor" href="#visualizaci%C3%B3n"></a>
@@ -192,7 +204,7 @@
 <h3 id="series-temporales">Series temporales<a class="anchor" aria-label="anchor" href="#series-temporales"></a>
 </h3>
 <p>Por ejemplo, podemos crear unos datos ilustrativos:</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">datos_ejemplo</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
 <span>  territorio <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span></span>
 <span>    <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Comunitat Valenciana"</span>, <span class="st">"España"</span><span class="op">)</span>,</span>
@@ -220,14 +232,14 @@
 <span>  colores <span class="op">=</span> <span class="va">colores</span>,</span>
 <span>  titulo <span class="op">=</span> <span class="st">"Indicador de ejemplo"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-unnamed-chunk-5-1.png"><!-- --></p>
+<p><img src="reference/figures/README-unnamed-chunk-6-1.png"><!-- --></p>
 </div>
 </div>
 <div class="section level2">
 <h2 id="personalización">Personalización<a class="anchor" aria-label="anchor" href="#personalizaci%C3%B3n"></a>
 </h2>
 <p>El resultado puede seguir modificándose con <code>ggplot2</code>:</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/grafico_lineas.html">grafico_lineas</a></span><span class="op">(</span></span>
 <span>  <span class="va">datos_ejemplo</span>,</span>
 <span>  grupo <span class="op">=</span> <span class="st">"territorio"</span>,</span>
@@ -242,7 +254,7 @@
 <span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span></span>
 <span>    legend.position <span class="op">=</span> <span class="st">"bottom"</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-unnamed-chunk-6-1.png"><!-- --></p>
+<p><img src="reference/figures/README-unnamed-chunk-7-1.png"><!-- --></p>
 </div>
 <div class="section level2">
 <h2 id="funciones-principales">Funciones principales<a class="anchor" aria-label="anchor" href="#funciones-principales"></a>
@@ -267,8 +279,14 @@
 <li><code><a href="reference/grafico_mapa_ccaa.html">grafico_mapa_ccaa()</a></code></li>
 <li><code><a href="reference/grafico_mapa_provincias.html">grafico_mapa_provincias()</a></code></li>
 </ul>
-<p>La documentación completa de cada función está disponible mediante la ayuda de R y en el sitio web del paquete.</p>
 </div>
+</div>
+<div class="section level2">
+<h2 id="agradecimientos">Agradecimientos<a class="anchor" aria-label="anchor" href="#agradecimientos"></a>
+</h2>
+<p>El desarrollo de <code>indicaR</code> se ha realizado en el marco del convenio de colaboración entre la Generalitat Valenciana (Conselleria de Economía, Hacienda y Administración Pública) y la Universitat de València para el desarrollo de las previsiones macroeconómicas de la economía valenciana.</p>
+<p>Se agradece el apoyo institucional y financiero proporcionado a través de este convenio, que ha hecho posible el desarrollo de las herramientas y recursos en los que se enmarca este paquete.</p>
+<p>La documentación completa de cada función está disponible mediante la ayuda de R y en el sitio web del paquete.</p>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">
@@ -298,8 +316,9 @@
 <div class="developers">
 <h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li>Virgilio Pérez <br><small class="roles"> Author, maintainer </small>   </li>
-<li><a href="authors.html">More about authors...</a></li>
+<li>Virgilio Pérez <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-7628-2855" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a>  </li>
+<li>Cristina Aybar <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0001-8887-8405" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a>  </li>
+<li>Jose M. Pavía <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-0129-726X" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a>  </li>
 </ul>
 </div>
 
@@ -310,7 +329,7 @@
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Virgilio Pérez.</p>
+  <p>Developed by Virgilio Pérez, Cristina Aybar, Jose M. Pavía.</p>
 </div>
 
 <div class="pkgdown-footer-right">
