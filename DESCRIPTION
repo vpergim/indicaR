@@ -30,6 +30,7 @@ Description: Proporciona herramientas para descubrir, consultar, filtrar y
     visualizaciones estadísticas.
 License: MIT + file LICENSE
 Encoding: UTF-8
+Language: es
 Depends:
     R (>= 4.1.0)
 Imports:
