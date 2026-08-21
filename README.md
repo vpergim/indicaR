@@ -44,35 +44,42 @@ library(indicaR)
 
 ### Indicadores disponibles
 
-`listar_indicadores()` permite consultar el catálogo de indicadores:
+`listar_indicadores()` permite consultar el catálogo de indicadores.
+
+La columna `id_dataset` contiene el identificador utilizado por el resto
+de funciones de consulta.
 
 ``` r
 indicadores <- listar_indicadores()
 
 head(indicadores)
-#> # A tibble: 6 × 6
-#>   id_dataset                         variable comentarios operacion organismo periodo
-#>   <chr>                              <chr>    <chr>       <chr>     <chr>     <chr>  
-#> 1 CCAA_SEXO_A_01                     ESPERAN… <NA>        Indicado… INE       1975-2…
-#> 2 CCAA_SEXO_A_02                     ESPERAN… <NA>        Indicado… INE       1975-2…
-#> 3 CCAA_SEXO_EDAD_A_01                TASA DE… En el item… Tablas d… INE       1991-2…
-#> 4 CCAA_SEXO_EDAD_A_02                ESPERAN… En el item… Tablas d… INE       1991-2…
-#> 5 CCAA_SEXO_EDAD_NIVELEDUCATIVO_A_01 ESPERAN… <NA>        Indicado… INE       2016-2…
-#> 6 CV_SECT1_TAMANYOEMP_A_01           EMPRESA… <NA>        DIRCE     INE       2020-2…
+#> # A tibble: 6 × 5
+#>   id_dataset                         variable             operacion organismo periodo
+#>   <chr>                              <chr>                <chr>     <chr>     <chr>  
+#> 1 CCAA_SEXO_A_01                     ESPERANZA DE VIDA a… Indicado… INE       1975-2…
+#> 2 CCAA_SEXO_A_02                     ESPERANZA DE VIDA a… Indicado… INE       1975-2…
+#> 3 CCAA_SEXO_EDAD_A_01                TASA DE MORTALIDAD … Tablas d… INE       1991-2…
+#> 4 CCAA_SEXO_EDAD_A_02                ESPERANZA DE VIDA p… Tablas d… INE       1991-2…
+#> 5 CCAA_SEXO_EDAD_NIVELEDUCATIVO_A_01 ESPERANZA DE VIDA p… Indicado… INE       2016-2…
+#> 6 CV_SECT1_TAMANYOEMP_A_01           EMPRESAS por sector… DIRCE     INE       2020-2…
 ```
 
-La columna `id_dataset` contiene el identificador utilizado por el resto
-de funciones de consulta.
-
 ### Información sobre un indicador
+
+La función devuelve información sobre:
+
+- los metadatos del indicador;
+- el número de observaciones;
+- la cobertura temporal;
+- las dimensiones disponibles.
 
 ``` r
 info_indicador("TERRITORIO_SEXO_EDAD_A_01")
 #> $metadata
-#> # A tibble: 1 × 7
-#>   id_dataset                variable    comentarios operacion organismo periodo url  
-#>   <chr>                     <chr>       <chr>       <chr>     <chr>     <chr>   <chr>
-#> 1 TERRITORIO_SEXO_EDAD_A_01 POBLACIÓN … <NA>        AGENDA20… INE       2015-2… http…
+#> # A tibble: 1 × 5
+#>   id_dataset                variable                      operacion organismo periodo
+#>   <chr>                     <chr>                         <chr>     <chr>     <chr>  
+#> 1 TERRITORIO_SEXO_EDAD_A_01 POBLACIÓN QUE ESTUDIA FORMAC… AGENDA20… INE       2015-2…
 #> 
 #> $n_observaciones
 #> [1] 880
@@ -103,17 +110,18 @@ info_indicador("TERRITORIO_SEXO_EDAD_A_01")
 #> 11       edad_tipo         1
 ```
 
-La función devuelve información sobre:
-
-- los metadatos del indicador;
-- el número de observaciones;
-- la cobertura temporal;
-- las dimensiones disponibles.
-
 ### Valores disponibles
 
 Antes de realizar una consulta puede comprobarse qué valores contiene
 una dimensión:
+
+``` r
+valores_indicador(
+  "TERRITORIO_SEXO_EDAD_A_01",
+  "sexo"
+)
+#> [1] "Hombres" "Mujeres"
+```
 
 ``` r
 valores_indicador(
@@ -124,6 +132,9 @@ valores_indicador(
 ```
 
 ### Obtener los datos
+
+`consultar_indicador()` devuelve un `data.frame` que puede utilizarse
+posteriormente con cualquier herramienta de R.
 
 ``` r
 datos <- consultar_indicador(
@@ -149,8 +160,16 @@ head(datos)
 #> #   valor <dbl>
 ```
 
-`consultar_indicador()` devuelve un `data.frame` que puede utilizarse
-posteriormente con cualquier herramienta de R.
+## Fuentes de los datos
+
+Los indicadores distribuidos por `indicaR` proceden de distintas
+fuentes. El organismo responsable y la operación estadística
+correspondiente, en su caso, se conservan en los metadatos asociados a
+cada indicador.
+
+`indicaR` transforma y homogeneiza estos datos para facilitar su
+consulta y visualización. La inclusión de los datos en el paquete no
+implica que `indicaR` sea su fuente original.
 
 ## Visualización
 
@@ -195,7 +214,7 @@ grafico_lineas(
 )
 ```
 
-![](man/figures/README-unnamed-chunk-5-1.png)<!-- -->
+![](man/figures/README-unnamed-chunk-6-1.png)<!-- -->
 
 ## Personalización
 
@@ -218,7 +237,7 @@ p +
   )
 ```
 
-![](man/figures/README-unnamed-chunk-6-1.png)<!-- -->
+![](man/figures/README-unnamed-chunk-7-1.png)<!-- -->
 
 ## Funciones principales
 
@@ -236,6 +255,17 @@ p +
 - `grafico_comparacion_territorial()`
 - `grafico_mapa_ccaa()`
 - `grafico_mapa_provincias()`
+
+## Agradecimientos
+
+El desarrollo de `indicaR` se ha realizado en el marco del convenio de
+colaboración entre la Generalitat Valenciana (Conselleria de Economía,
+Hacienda y Administración Pública) y la Universitat de València para el
+desarrollo de las previsiones macroeconómicas de la economía valenciana.
+
+Se agradece el apoyo institucional y financiero proporcionado a través
+de este convenio, que ha hecho posible el desarrollo de las herramientas
+y recursos en los que se enmarca este paquete.
 
 La documentación completa de cada función está disponible mediante la
 ayuda de R y en el sitio web del paquete.

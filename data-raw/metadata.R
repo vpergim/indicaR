@@ -30,9 +30,21 @@ metadata_path <- file.path(
 # 2. Lectura de la hoja principal
 # ----------------------------------------------------------------------------
 
-metadata <- readxl::read_xlsx(
+metadata_full <- readxl::read_xlsx(
   path = metadata_path,
   sheet = "metadata"
+)
+
+metadata <- metadata_full %>%
+  select(
+  c("NOMBRE ARCHIVO",
+    "VARIABLE",
+    "OPERACIÓN",
+    "ORGANISMO",
+    "PERIODO",
+    "CELDA INICIO",
+    "CELDA FIN"
+    )
 )
 
 
@@ -49,13 +61,11 @@ metadata <- metadata |>
   dplyr::transmute(
     id_dataset = `NOMBRE ARCHIVO`,
     variable = VARIABLE,
-    comentarios = COMENTARIOS,
     operacion = `OPERACIÓN`,
     organismo = ORGANISMO,
     periodo = PERIODO,
     celda_inicio = `CELDA INICIO`,
-    celda_fin = `CELDA FIN`,
-    url = ENLACE
+    celda_fin = `CELDA FIN`
   )
 
 

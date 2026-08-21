@@ -12,8 +12,8 @@
 #' \describe{
 #'   \item{metadata}{
 #'     Tabla de una fila con la información descriptiva del indicador,
-#'     incluyendo su variable, operación estadística, organismo, período
-#'     disponible y, cuando existe, comentarios y URL de la fuente.
+#'     incluyendo su variable, operación estadística, organismo y período
+#'     disponible.
 #'   }
 #'
 #'   \item{n_observaciones}{
@@ -118,11 +118,9 @@ info_indicador <- function(id_dataset) {
       dplyr::select(
         id_dataset,
         variable,
-        comentarios,
         operacion,
         organismo,
-        periodo,
-        url
+        periodo
       ),
 
     n_observaciones = nrow(datos),

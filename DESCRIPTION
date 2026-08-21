@@ -7,18 +7,18 @@ Authors@R: c(
         family = "Pérez",
         email = "virgilio.perez@uv.es",
         role = c("aut", "cre"),
-        comment = c("0000-0002-7628-2855")
+        comment = c(ORCID = "0000-0002-7628-2855")
     ),
         person(
         given = "Cristina",
         family = "Aybar",
-        role = "ctb",
+        role = "aut",
         comment = c(ORCID = "0000-0001-8887-8405")
     ),
     person(
         given = "Jose M.",
         family = "Pavía",
-        role = "ctb",
+        role = "aut",
         comment = c(ORCID = "0000-0002-0129-726X")
     )
   )

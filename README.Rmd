@@ -56,7 +56,10 @@ library(indicaR)
 
 ### Indicadores disponibles
 
-`listar_indicadores()` permite consultar el catálogo de indicadores:
+`listar_indicadores()` permite consultar el catálogo de indicadores.
+
+La columna `id_dataset` contiene el identificador utilizado por el resto de
+funciones de consulta.
 
 ```{r}
 indicadores <- listar_indicadores()
@@ -64,14 +67,7 @@ indicadores <- listar_indicadores()
 head(indicadores)
 ```
 
-La columna `id_dataset` contiene el identificador utilizado por el resto de
-funciones de consulta.
-
 ### Información sobre un indicador
-
-```{r}
-info_indicador("TERRITORIO_SEXO_EDAD_A_01")
-```
 
 La función devuelve información sobre:
 
@@ -79,6 +75,10 @@ La función devuelve información sobre:
 - el número de observaciones;
 - la cobertura temporal;
 - las dimensiones disponibles.
+
+```{r}
+info_indicador("TERRITORIO_SEXO_EDAD_A_01")
+```
 
 ### Valores disponibles
 
@@ -88,11 +88,21 @@ dimensión:
 ```{r}
 valores_indicador(
   "TERRITORIO_SEXO_EDAD_A_01",
+  "sexo"
+)
+```
+
+```{r}
+valores_indicador(
+  "TERRITORIO_SEXO_EDAD_A_01",
   "edad"
 )
 ```
 
 ### Obtener los datos
+
+`consultar_indicador()` devuelve un `data.frame` que puede utilizarse
+posteriormente con cualquier herramienta de R.
 
 ```{r}
 datos <- consultar_indicador(
@@ -105,8 +115,14 @@ datos <- consultar_indicador(
 head(datos)
 ```
 
-`consultar_indicador()` devuelve un `data.frame` que puede utilizarse
-posteriormente con cualquier herramienta de R.
+## Fuentes de los datos
+
+Los indicadores distribuidos por `indicaR` proceden de distintas fuentes. El organismo responsable y la operación estadística
+correspondiente, en su caso, se conservan en los metadatos asociados a cada indicador.
+
+`indicaR` transforma y homogeneiza estos datos para facilitar su consulta y
+visualización. La inclusión de los datos en el paquete no implica que
+`indicaR` sea su fuente original.
 
 ## Visualización
 
@@ -187,6 +203,16 @@ p +
 - `grafico_comparacion_territorial()`
 - `grafico_mapa_ccaa()`
 - `grafico_mapa_provincias()`
+
+## Agradecimientos
+
+El desarrollo de `indicaR` se ha realizado en el marco del convenio de
+colaboración entre la Generalitat Valenciana (Conselleria de Economía, Hacienda y Administración Pública) y la Universitat de València para
+el desarrollo de las previsiones macroeconómicas de la economía valenciana.
+
+Se agradece el apoyo institucional y financiero proporcionado a través de este
+convenio, que ha hecho posible el desarrollo de las herramientas y recursos en
+los que se enmarca este paquete.
 
 La documentación completa de cada función está disponible mediante la ayuda de
 R y en el sitio web del paquete.

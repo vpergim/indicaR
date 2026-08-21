@@ -21,11 +21,6 @@
 #'     indicador.
 #'   }
 #'
-#'   \item{comentarios}{
-#'     Información adicional sobre el indicador cuando está disponible.
-#'     Puede contener aclaraciones metodológicas o sobre la fuente.
-#'   }
-#'
 #'   \item{operacion}{
 #'     Operación o fuente estadística de la que procede el indicador.
 #'   }
@@ -52,7 +47,6 @@ listar_indicadores <- function() {
     dplyr::select(
       id_dataset,
       variable,
-      comentarios,
       operacion,
       organismo,
       periodo
