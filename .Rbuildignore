@@ -1,2 +1,10 @@
-^reportPlots\.Rproj$
+^indicaR\.Rproj$
 ^\.Rproj\.user$
+^data-raw$
+^LICENSE\.md$
+^doc$
+^Meta$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+^README\.Rmd$

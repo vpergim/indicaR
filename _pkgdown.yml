@@ -1,0 +1,40 @@
+url: https://vpergim.github.io/indicaR/
+
+template:
+  bootstrap: 5
+
+navbar:
+  structure:
+    left: [home, reference, articles]
+    right: [github]
+  components:
+    reference:
+      text: Referencia
+      href: reference/index.html
+    articles:
+      text: Artículos
+      menu:
+      - text: Introducción a indicaR
+        href: articles/introduccion.html
+
+reference:
+- title: "Consulta de indicadores"
+  desc: >
+    Funciones para descubrir, explorar y consultar los indicadores incluidos
+    en el paquete.
+  contents:
+  - listar_indicadores
+  - info_indicador
+  - valores_indicador
+  - consultar_indicador
+
+- title: "Visualización"
+  desc: >
+    Funciones para generar gráficos a partir de los datos de indicaR o de
+    cualquier data.frame compatible.
+  contents:
+  - grafico_lineas
+  - grafico_columnas_apiladas
+  - grafico_comparacion_territorial
+  - grafico_mapa_ccaa
+  - grafico_mapa_provincias

@@ -1,0 +1,182 @@
+---
+title: "Introducción a indicaR"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introducción a indicaR}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.width = 7,
+  fig.height = 5
+)
+```
+
+# indicaR
+
+`indicaR` facilita la consulta y visualización de una colección de indicadores
+estadísticos.
+
+El paquete ofrece dos grupos principales de funciones:
+
+- funciones para descubrir y consultar los indicadores incluidos en el paquete;
+- funciones de visualización basadas en `ggplot2`.
+
+Las funciones de visualización no están ligadas a los datos internos de
+`indicaR`: también pueden utilizarse con cualquier `data.frame` que tenga la
+estructura necesaria.
+
+```{r setup}
+library(indicaR)
+```
+
+# Descubrir los indicadores disponibles
+
+La función `listar_indicadores()` muestra los indicadores disponibles y la
+información básica asociada a cada uno.
+
+```{r}
+indicadores <- listar_indicadores()
+
+head(indicadores)
+```
+
+La columna `id_dataset` contiene el identificador que debe utilizarse en las
+demás funciones de consulta.
+
+# Consultar información sobre un indicador
+
+`info_indicador()` permite conocer con más detalle el contenido de un
+indicador.
+
+```{r}
+info_indicador("TERRITORIO_SEXO_EDAD_A_01")
+```
+
+Entre otra información, muestra:
+
+- los metadatos del indicador;
+- el número de observaciones;
+- su cobertura temporal;
+- las dimensiones disponibles.
+
+# Consultar los valores de una dimensión
+
+Antes de filtrar un indicador puede ser útil comprobar qué valores existen en
+una dimensión concreta.
+
+```{r}
+valores_indicador(
+  "TERRITORIO_SEXO_EDAD_A_01",
+  "sexo"
+)
+```
+
+También puede consultarse, por ejemplo, la dimensión de edad:
+
+```{r}
+valores_indicador(
+  "TERRITORIO_SEXO_EDAD_A_01",
+  "edad"
+)
+```
+
+# Obtener los datos
+
+La función principal de acceso a los datos es `consultar_indicador()`.
+
+Por ejemplo:
+
+```{r}
+datos <- consultar_indicador(
+  "TERRITORIO_SEXO_EDAD_A_01",
+  sexo = "Mujeres",
+  edad = "De 25 a 64 años",
+  tipo_territorio = "ccaa"
+)
+
+head(datos)
+```
+
+El resultado es un `data.frame` que puede utilizarse directamente en R,
+transformarse con otras herramientas o exportarse mediante las funciones que
+prefiera el usuario.
+
+# Visualizaciones
+
+Las funciones gráficas de `indicaR` devuelven objetos `ggplot`, por lo que el
+resultado puede seguir modificándose con la gramática habitual de `ggplot2`.
+
+## Series temporales
+
+Para ilustrar que las funciones gráficas también admiten datos externos,
+creamos un conjunto de datos sencillo:
+
+```{r}
+datos_lineas <- data.frame(
+  territorio = rep(
+    c("Comunitat Valenciana", "España"),
+    each = 18
+  ),
+  anyo = rep(2004:2021, times = 2),
+  valor = c(
+    79.8, 79.7, 80.4, 80.5, 80.9, 81.3,
+    81.6, 81.8, 81.9, 82.4, 82.4, 82.2,
+    82.6, 82.5, 82.6, 83.0, 82.4, 82.2,
+    80.3, 80.3, 80.9, 81.0, 81.3, 81.7,
+    82.1, 82.2, 82.3, 82.8, 82.9, 82.7,
+    83.1, 83.1, 83.2, 83.6, 82.3, 83.1
+  )
+)
+
+colores <- c(
+  "Comunitat Valenciana" = "#000000",
+  "España" = "#AA151B"
+)
+
+grafico_lineas(
+  datos_lineas,
+  grupo = "territorio",
+  colores = colores,
+  titulo = "Indicador de ejemplo"
+)
+```
+
+# Personalizar los gráficos
+
+Como las funciones devuelven objetos `ggplot`, pueden modificarse después de
+crearlos.
+
+```{r}
+p <- grafico_lineas(
+  datos_lineas,
+  grupo = "territorio",
+  colores = colores
+)
+
+p +
+  ggplot2::labs(
+    title = "Título personalizado",
+    subtitle = "Ejemplo de modificación posterior"
+  ) +
+  ggplot2::theme(
+    legend.position = "bottom"
+  )
+```
+
+Esta separación permite utilizar `indicaR` de dos maneras:
+
+1. consultar los indicadores incluidos en el paquete y representarlos;
+2. utilizar únicamente sus funciones gráficas con otros conjuntos de datos.
+
+Para conocer los argumentos disponibles en cada función puede consultarse su
+ayuda, por ejemplo:
+
+```r
+?consultar_indicador
+?grafico_lineas
+```

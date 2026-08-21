@@ -1,0 +1,182 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+# indicaR
+
+`indicaR` es un paquete de R para consultar y visualizar una colección de
+indicadores estadísticos.
+
+El paquete permite:
+
+- descubrir los indicadores disponibles;
+- consultar su contenido, cobertura y dimensiones;
+- filtrar los datos por período, territorio y otras dimensiones;
+- obtener los resultados como `data.frame`;
+- generar visualizaciones mediante funciones basadas en `ggplot2`.
+
+Las funciones de visualización también pueden utilizarse con datos externos:
+no es necesario trabajar con los indicadores incluidos en `indicaR`.
+
+## Instalación
+
+La versión de desarrollo puede instalarse desde GitHub:
+
+```{r installation, eval=FALSE}
+# install.packages("pak")
+pak::pak("vpergim/indicaR")
+```
+
+También puede utilizarse `remotes`:
+
+```{r installation-remotes, eval=FALSE}
+# install.packages("remotes")
+remotes::install_github("vpergim/indicaR")
+```
+
+## Consulta de indicadores
+
+Cargamos el paquete:
+
+```{r setup}
+library(indicaR)
+```
+
+### Indicadores disponibles
+
+`listar_indicadores()` permite consultar el catálogo de indicadores:
+
+```{r}
+indicadores <- listar_indicadores()
+
+head(indicadores)
+```
+
+La columna `id_dataset` contiene el identificador utilizado por el resto de
+funciones de consulta.
+
+### Información sobre un indicador
+
+```{r}
+info_indicador("TERRITORIO_SEXO_EDAD_A_01")
+```
+
+La función devuelve información sobre:
+
+- los metadatos del indicador;
+- el número de observaciones;
+- la cobertura temporal;
+- las dimensiones disponibles.
+
+### Valores disponibles
+
+Antes de realizar una consulta puede comprobarse qué valores contiene una
+dimensión:
+
+```{r}
+valores_indicador(
+  "TERRITORIO_SEXO_EDAD_A_01",
+  "edad"
+)
+```
+
+### Obtener los datos
+
+```{r}
+datos <- consultar_indicador(
+  "TERRITORIO_SEXO_EDAD_A_01",
+  sexo = "Mujeres",
+  edad = "De 25 a 64 años",
+  tipo_territorio = "ccaa"
+)
+
+head(datos)
+```
+
+`consultar_indicador()` devuelve un `data.frame` que puede utilizarse
+posteriormente con cualquier herramienta de R.
+
+## Visualización
+
+Las funciones gráficas de `indicaR` reciben datos en formato largo y devuelven
+objetos `ggplot`.
+
+Esto permite utilizar tanto datos obtenidos mediante `consultar_indicador()`
+como cualquier otro conjunto de datos compatible.
+
+### Series temporales
+
+Por ejemplo, podemos crear unos datos ilustrativos:
+
+```{r}
+datos_ejemplo <- data.frame(
+  territorio = rep(
+    c("Comunitat Valenciana", "España"),
+    each = 18
+  ),
+  anyo = rep(2004:2021, times = 2),
+  valor = c(
+    79.8, 79.7, 80.4, 80.5, 80.9, 81.3,
+    81.6, 81.8, 81.9, 82.4, 82.4, 82.2,
+    82.6, 82.5, 82.6, 83.0, 82.4, 82.2,
+    80.3, 80.3, 80.9, 81.0, 81.3, 81.7,
+    82.1, 82.2, 82.3, 82.8, 82.9, 82.7,
+    83.1, 83.1, 83.2, 83.6, 82.3, 83.1
+  )
+)
+
+colores <- c(
+  "Comunitat Valenciana" = "#000000",
+  "España" = "#AA151B"
+)
+
+grafico_lineas(
+  datos_ejemplo,
+  grupo = "territorio",
+  colores = colores,
+  titulo = "Indicador de ejemplo"
+)
+```
+
+## Personalización
+
+El resultado puede seguir modificándose con `ggplot2`:
+
+```{r}
+p <- grafico_lineas(
+  datos_ejemplo,
+  grupo = "territorio",
+  colores = colores
+)
+
+p +
+  ggplot2::labs(
+    title = "Título personalizado",
+    subtitle = "Comunitat Valenciana y España"
+  ) +
+  ggplot2::theme(
+    legend.position = "bottom"
+  )
+```
+
+## Funciones principales
+
+### Consulta de datos
+
+- `listar_indicadores()`
+- `info_indicador()`
+- `valores_indicador()`
+- `consultar_indicador()`
+
+### Visualización
+
+- `grafico_lineas()`
+- `grafico_columnas_apiladas()`
+- `grafico_comparacion_territorial()`
+- `grafico_mapa_ccaa()`
+- `grafico_mapa_provincias()`
+
+La documentación completa de cada función está disponible mediante la ayuda de
+R y en el sitio web del paquete.

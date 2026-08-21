@@ -1,18 +1,52 @@
-Package: reportPlots
-Title: What the Package Does (One Line, Title Case)
+Package: indicaR
+Title: Consulta y visualización de indicadores estadísticos
 Version: 0.0.0.9000
-Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+Authors@R: c(
+    person(
+        given = "Virgilio",
+        family = "Pérez",
+        email = "virgilio.perez@uv.es",
+        role = c("aut", "cre"),
+        comment = c("0000-0002-7628-2855")
+    ),
+        person(
+        given = "Cristina",
+        family = "Aybar",
+        role = "ctb",
+        comment = c(ORCID = "0000-0001-8887-8405")
+    ),
+    person(
+        given = "Jose M.",
+        family = "Pavía",
+        role = "ctb",
+        comment = c(ORCID = "0000-0002-0129-726X")
+    )
+  )
+Description: Proporciona herramientas para descubrir, consultar, filtrar y
+    visualizar una colección de indicadores estadísticos. Los datos se
+    distribuyen internamente en un formato normalizado y pueden consultarse
+    sin necesidad de disponer de los ficheros originales. El paquete también
+    incluye funciones para crear
+    visualizaciones estadísticas.
+License: MIT + file LICENSE
 Encoding: UTF-8
-Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.3
-Imports: 
-    ggplot2
-Suggests: 
+Depends:
+    R (>= 4.1.0)
+Imports:
+    dplyr,
+    ggplot2,
+    scales,
+    sf,
+    tidyr,
+    tidyselect
+Suggests:
+    knitr,
+    mapSpain,
+    rmarkdown,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
-URL: https://github.com/vpergim/reportPlots
-BugReports: https://github.com/vpergim/reportPlots/issues
+Roxygen: list(markdown = TRUE)
+Config/roxygen2/version: 8.0.0
+URL: https://github.com/vpergim/indicaR
+BugReports: https://github.com/vpergim/indicaR/issues
+VignetteBuilder: knitr
