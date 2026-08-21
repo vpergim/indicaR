@@ -4,6 +4,16 @@ output: github_document
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
+```{r setup-readme, include=FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-"
+)
+
+pkgload::load_all()
+```
+
 # indicaR
 
 `indicaR` es un paquete de R para consultar y visualizar una colección de
@@ -40,7 +50,7 @@ remotes::install_github("vpergim/indicaR")
 
 Cargamos el paquete:
 
-```{r setup}
+```{r setup, eval=FALSE}
 library(indicaR)
 ```
 

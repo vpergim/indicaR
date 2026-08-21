@@ -50,17 +50,16 @@ library(indicaR)
 indicadores <- listar_indicadores()
 
 head(indicadores)
+#> # A tibble: 6 × 6
+#>   id_dataset                         variable comentarios operacion organismo periodo
+#>   <chr>                              <chr>    <chr>       <chr>     <chr>     <chr>  
+#> 1 CCAA_SEXO_A_01                     ESPERAN… <NA>        Indicado… INE       1975-2…
+#> 2 CCAA_SEXO_A_02                     ESPERAN… <NA>        Indicado… INE       1975-2…
+#> 3 CCAA_SEXO_EDAD_A_01                TASA DE… En el item… Tablas d… INE       1991-2…
+#> 4 CCAA_SEXO_EDAD_A_02                ESPERAN… En el item… Tablas d… INE       1991-2…
+#> 5 CCAA_SEXO_EDAD_NIVELEDUCATIVO_A_01 ESPERAN… <NA>        Indicado… INE       2016-2…
+#> 6 CV_SECT1_TAMANYOEMP_A_01           EMPRESA… <NA>        DIRCE     INE       2020-2…
 ```
-
-    ## # A tibble: 6 × 6
-    ##   id_dataset                    variable comentarios operacion organismo periodo
-    ##   <chr>                         <chr>    <chr>       <chr>     <chr>     <chr>  
-    ## 1 CCAA_SEXO_A_01                ESPERAN… <NA>        Indicado… INE       1975-2…
-    ## 2 CCAA_SEXO_A_02                ESPERAN… <NA>        Indicado… INE       1975-2…
-    ## 3 CCAA_SEXO_EDAD_A_01           TASA DE… En el item… Tablas d… INE       1991-2…
-    ## 4 CCAA_SEXO_EDAD_A_02           ESPERAN… En el item… Tablas d… INE       1991-2…
-    ## 5 CCAA_SEXO_EDAD_NIVELEDUCATIV… ESPERAN… <NA>        Indicado… INE       2016-2…
-    ## 6 CV_SECT1_TAMANYOEMP_A_01      EMPRESA… <NA>        DIRCE     INE       2020-2…
 
 La columna `id_dataset` contiene el identificador utilizado por el resto
 de funciones de consulta.
@@ -69,41 +68,40 @@ de funciones de consulta.
 
 ``` r
 info_indicador("TERRITORIO_SEXO_EDAD_A_01")
+#> $metadata
+#> # A tibble: 1 × 7
+#>   id_dataset                variable    comentarios operacion organismo periodo url  
+#>   <chr>                     <chr>       <chr>       <chr>     <chr>     <chr>   <chr>
+#> 1 TERRITORIO_SEXO_EDAD_A_01 POBLACIÓN … <NA>        AGENDA20… INE       2015-2… http…
+#> 
+#> $n_observaciones
+#> [1] 880
+#> 
+#> $cobertura
+#> $cobertura$anyo_min
+#> [1] 2015
+#> 
+#> $cobertura$anyo_max
+#> [1] 2025
+#> 
+#> $cobertura$frecuencia
+#> [1] "A"
+#> 
+#> 
+#> $dimensiones
+#>          dimension n_valores
+#> 1       territorio        20
+#> 2  tipo_territorio         2
+#> 3         cod_ccaa        19
+#> 4             ccaa        19
+#> 5    cod_provincia         0
+#> 6        provincia         0
+#> 7             sexo         2
+#> 8             edad         2
+#> 9         edad_min         2
+#> 10        edad_max         2
+#> 11       edad_tipo         1
 ```
-
-    ## $metadata
-    ## # A tibble: 1 × 7
-    ##   id_dataset              variable comentarios operacion organismo periodo url  
-    ##   <chr>                   <chr>    <chr>       <chr>     <chr>     <chr>   <chr>
-    ## 1 TERRITORIO_SEXO_EDAD_A… POBLACI… <NA>        AGENDA20… INE       2015-2… http…
-    ## 
-    ## $n_observaciones
-    ## [1] 880
-    ## 
-    ## $cobertura
-    ## $cobertura$anyo_min
-    ## [1] 2015
-    ## 
-    ## $cobertura$anyo_max
-    ## [1] 2025
-    ## 
-    ## $cobertura$frecuencia
-    ## [1] "A"
-    ## 
-    ## 
-    ## $dimensiones
-    ##          dimension n_valores
-    ## 1       territorio        20
-    ## 2  tipo_territorio         2
-    ## 3         cod_ccaa        19
-    ## 4             ccaa        19
-    ## 5    cod_provincia         0
-    ## 6        provincia         0
-    ## 7             sexo         2
-    ## 8             edad         2
-    ## 9         edad_min         2
-    ## 10        edad_max         2
-    ## 11       edad_tipo         1
 
 La función devuelve información sobre:
 
@@ -122,9 +120,8 @@ valores_indicador(
   "TERRITORIO_SEXO_EDAD_A_01",
   "edad"
 )
+#> [1] "De 15 a 24 años" "De 25 a 64 años"
 ```
-
-    ## [1] "De 15 a 24 años" "De 25 a 64 años"
 
 ### Obtener los datos
 
@@ -137,21 +134,20 @@ datos <- consultar_indicador(
 )
 
 head(datos)
+#> # A tibble: 6 × 21
+#>   id_dataset       variable operacion organismo frecuencia territorio tipo_territorio
+#>   <chr>            <chr>    <chr>     <chr>     <chr>      <chr>      <chr>          
+#> 1 TERRITORIO_SEXO… POBLACI… AGENDA20… INE       A          Andalucía  ccaa           
+#> 2 TERRITORIO_SEXO… POBLACI… AGENDA20… INE       A          Andalucía  ccaa           
+#> 3 TERRITORIO_SEXO… POBLACI… AGENDA20… INE       A          Andalucía  ccaa           
+#> 4 TERRITORIO_SEXO… POBLACI… AGENDA20… INE       A          Andalucía  ccaa           
+#> 5 TERRITORIO_SEXO… POBLACI… AGENDA20… INE       A          Andalucía  ccaa           
+#> 6 TERRITORIO_SEXO… POBLACI… AGENDA20… INE       A          Andalucía  ccaa           
+#> # ℹ 14 more variables: cod_ccaa <chr>, ccaa <chr>, cod_provincia <chr>,
+#> #   provincia <chr>, sexo <chr>, edad <chr>, edad_min <int>, edad_max <int>,
+#> #   edad_tipo <chr>, periodo <chr>, anyo <int>, trimestre <int>, mes <int>,
+#> #   valor <dbl>
 ```
-
-    ## # A tibble: 6 × 21
-    ##   id_dataset  variable operacion organismo frecuencia territorio tipo_territorio
-    ##   <chr>       <chr>    <chr>     <chr>     <chr>      <chr>      <chr>          
-    ## 1 TERRITORIO… POBLACI… AGENDA20… INE       A          Andalucía  ccaa           
-    ## 2 TERRITORIO… POBLACI… AGENDA20… INE       A          Andalucía  ccaa           
-    ## 3 TERRITORIO… POBLACI… AGENDA20… INE       A          Andalucía  ccaa           
-    ## 4 TERRITORIO… POBLACI… AGENDA20… INE       A          Andalucía  ccaa           
-    ## 5 TERRITORIO… POBLACI… AGENDA20… INE       A          Andalucía  ccaa           
-    ## 6 TERRITORIO… POBLACI… AGENDA20… INE       A          Andalucía  ccaa           
-    ## # ℹ 14 more variables: cod_ccaa <chr>, ccaa <chr>, cod_provincia <chr>,
-    ## #   provincia <chr>, sexo <chr>, edad <chr>, edad_min <int>, edad_max <int>,
-    ## #   edad_tipo <chr>, periodo <chr>, anyo <int>, trimestre <int>, mes <int>,
-    ## #   valor <dbl>
 
 `consultar_indicador()` devuelve un `data.frame` que puede utilizarse
 posteriormente con cualquier herramienta de R.
@@ -199,7 +195,7 @@ grafico_lineas(
 )
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
+![](man/figures/README-unnamed-chunk-5-1.png)<!-- -->
 
 ## Personalización
 
@@ -222,7 +218,7 @@ p +
   )
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
+![](man/figures/README-unnamed-chunk-6-1.png)<!-- -->
 
 ## Funciones principales
 
