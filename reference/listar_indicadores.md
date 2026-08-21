@@ -3,13 +3,13 @@
 Devuelve una tabla con los indicadores disponibles en el paquete y su
 información descriptiva básica.
 
-## Usage
+## Uso
 
 ``` r
 listar_indicadores()
 ```
 
-## Value
+## Valor
 
 Un `data.frame` con una fila por indicador y las siguientes columnas:
 
@@ -45,18 +45,18 @@ Un `data.frame` con una fila por indicador y las siguientes columnas:
   almacenados puede utilizarse
   [`info_indicador()`](https://vpergim.github.io/indicaR/reference/info_indicador.md).
 
-## Details
+## Detalles
 
 Esta función está pensada como punto de entrada para descubrir qué
 indicadores pueden consultarse y obtener el `id_dataset` necesario para
 utilizar otras funciones de la API, como
 [`info_indicador()`](https://vpergim.github.io/indicaR/reference/info_indicador.md).
 
-## See also
+## Ver también
 
 [`info_indicador()`](https://vpergim.github.io/indicaR/reference/info_indicador.md)
 
-## Examples
+## Ejemplos
 
 ``` r
 listar_indicadores()

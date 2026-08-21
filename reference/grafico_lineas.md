@@ -2,7 +2,7 @@
 
 Genera un gráfico de líneas a partir de datos en formato largo.
 
-## Usage
+## Uso
 
 ``` r
 grafico_lineas(
@@ -19,7 +19,7 @@ grafico_lineas(
 )
 ```
 
-## Arguments
+## Argumentos
 
 - datos:
 
@@ -69,12 +69,12 @@ grafico_lineas(
   es numérica, se calculan automáticamente mediante
   [`scales::breaks_pretty()`](https://scales.r-lib.org/reference/breaks_pretty.html).
 
-## Value
+## Valor
 
 Un objeto de clase `ggplot` que puede modificarse posteriormente
 mediante la gramática habitual de `ggplot2`.
 
-## Details
+## Detalles
 
 Puede representar una única serie o varias series diferenciadas mediante
 una variable de agrupación. Los datos pueden proceder de
@@ -85,7 +85,7 @@ Los datos deben contener una única observación por punto y serie. Si
 quedan dimensiones sin filtrar, la función informa de cuáles son y de
 sus valores disponibles.
 
-## Examples
+## Ejemplos
 
 ``` r
 

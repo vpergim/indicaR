@@ -4,7 +4,7 @@ Representa valores por comunidad autónoma mediante un mapa coroplético
 de España. Los datos se relacionan con la cartografía mediante el código
 de comunidad autónoma.
 
-## Usage
+## Uso
 
 ``` r
 grafico_mapa_ccaa(
@@ -21,7 +21,7 @@ grafico_mapa_ccaa(
 )
 ```
 
-## Arguments
+## Argumentos
 
 - datos:
 
@@ -70,11 +70,11 @@ grafico_mapa_ccaa(
   Si es `TRUE`, mantiene Ceuta y Melilla en el mapa. Por defecto,
   `FALSE`.
 
-## Value
+## Valor
 
 Un objeto de clase `ggplot`.
 
-## Details
+## Detalles
 
 Canarias se muestran desplazadas junto a la Península. El usuario puede
 añadir una línea, un recuadro o ningún elemento auxiliar alrededor de
@@ -83,7 +83,7 @@ ellas.
 Cada comunidad autónoma debe tener como máximo una observación. La
 función no agrega observaciones ni calcula valores territoriales.
 
-## Examples
+## Ejemplos
 
 ``` r
 datos_ejemplo <- data.frame(

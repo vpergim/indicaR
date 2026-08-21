@@ -4,7 +4,7 @@ Genera un gráfico horizontal para comparar el valor de un indicador
 entre distintas categorías, normalmente territorios, en un único
 período.
 
-## Usage
+## Uso
 
 ``` r
 grafico_comparacion_territorial(
@@ -22,7 +22,7 @@ grafico_comparacion_territorial(
 )
 ```
 
-## Arguments
+## Argumentos
 
 - datos:
 
@@ -77,11 +77,11 @@ grafico_comparacion_territorial(
   Si es `TRUE`, ordena las categorías de mayor a menor. Si es `FALSE`,
   las ordena de menor a mayor.
 
-## Value
+## Valor
 
 Un objeto de clase `ggplot`.
 
-## Details
+## Detalles
 
 Permite destacar determinadas categorías mediante colores específicos y
 ordenar los valores de mayor a menor o de menor a mayor.
@@ -89,7 +89,7 @@ ordenar los valores de mayor a menor o de menor a mayor.
 Cada categoría debe aparecer una sola vez en `datos`. La función no
 agrega ni resume observaciones automáticamente.
 
-## Examples
+## Ejemplos
 
 ``` r
 datos_ejemplo <- data.frame(

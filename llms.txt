@@ -279,7 +279,7 @@ y recursos en los que se enmarca este paquete.
 La documentación completa de cada función está disponible mediante la
 ayuda de R y en el sitio web del paquete.
 
-# Package index
+# Índice del paquete
 
 ## Consulta de indicadores
 
@@ -311,9 +311,9 @@ cualquier data.frame compatible.
 - [`grafico_mapa_provincias()`](https://vpergim.github.io/indicaR/reference/grafico_mapa_provincias.md)
   : Mapa por provincias
 
-# Articles
+# Artículos
 
-### All vignettes
+### Todos los artículos
 
 - [Introducción a
   indicaR](https://vpergim.github.io/indicaR/articles/introduccion.md):

@@ -4,7 +4,7 @@ Genera un gráfico de columnas apiladas para representar la distribución
 de una variable categórica. Opcionalmente, permite comparar grupos
 mediante facetas.
 
-## Usage
+## Uso
 
 ``` r
 grafico_columnas_apiladas(
@@ -26,7 +26,7 @@ grafico_columnas_apiladas(
 )
 ```
 
-## Arguments
+## Argumentos
 
 - datos:
 
@@ -95,11 +95,11 @@ grafico_columnas_apiladas(
 
   Número de filas de la leyenda. Por defecto, `1`.
 
-## Value
+## Valor
 
 Un objeto de clase `ggplot`.
 
-## Details
+## Detalles
 
 Las categorías pueden ordenarse explícitamente y representarse mediante
 una paleta de colores personalizada.
@@ -107,7 +107,7 @@ una paleta de colores personalizada.
 Cada combinación de `x`, `categoria` y, si se utiliza, `faceta` debe
 identificar una única observación.
 
-## Examples
+## Ejemplos
 
 ``` r
 datos_ejemplo <- data.frame(

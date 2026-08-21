@@ -3,13 +3,13 @@
 Devuelve los valores disponibles para una columna concreta de un
 indicador.
 
-## Usage
+## Uso
 
 ``` r
 valores_indicador(id_dataset, dimension, buscar = NULL)
 ```
 
-## Arguments
+## Argumentos
 
 - id_dataset:
 
@@ -29,12 +29,12 @@ valores_indicador(id_dataset, dimension, buscar = NULL)
   disponibles de una dimensión de tipo texto. La búsqueda no distingue
   entre mayúsculas y minúsculas y se realiza de forma literal.
 
-## Value
+## Valor
 
 Un vector con los valores distintos disponibles en la dimensión
 solicitada.
 
-## Details
+## Detalles
 
 Esta función permite conocer qué valores pueden utilizarse como filtros
 en
@@ -49,13 +49,13 @@ normalizados del paquete.
 En dimensiones con muchos valores, `buscar` permite localizar categorías
 sin truncar la lista original de valores disponibles.
 
-## See also
+## Ver también
 
 [`listar_indicadores()`](https://vpergim.github.io/indicaR/reference/listar_indicadores.md),
 [`info_indicador()`](https://vpergim.github.io/indicaR/reference/info_indicador.md),
 [`consultar_indicador()`](https://vpergim.github.io/indicaR/reference/consultar_indicador.md)
 
-## Examples
+## Ejemplos
 
 ``` r
 valores_indicador(

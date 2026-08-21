@@ -1,4 +1,4 @@
-# Package index
+# Índice del paquete
 
 ## Consulta de indicadores
 

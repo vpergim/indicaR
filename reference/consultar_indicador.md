@@ -3,13 +3,13 @@
 Devuelve los datos de un indicador y permite filtrarlos por cualquiera
 de las dimensiones disponibles en el dataset normalizado.
 
-## Usage
+## Uso
 
 ``` r
 consultar_indicador(id_dataset, ...)
 ```
 
-## Arguments
+## Argumentos
 
 - id_dataset:
 
@@ -23,11 +23,11 @@ consultar_indicador(id_dataset, ...)
   indicarse como `columna = valor`. Se pueden proporcionar varios
   valores mediante un vector, por ejemplo `anyo = c(2023, 2024)`.
 
-## Value
+## Valor
 
 Un `data.frame` con las observaciones que cumplen los filtros.
 
-## Details
+## Detalles
 
 Los filtros se especifican mediante argumentos con nombre. El nombre
 debe coincidir con una columna disponible en el indicador y los valores
@@ -45,12 +45,12 @@ territoriales distintos.
 Las dimensiones disponibles para cada indicador pueden consultarse con
 [`info_indicador()`](https://vpergim.github.io/indicaR/reference/info_indicador.md).
 
-## See also
+## Ver también
 
 [`listar_indicadores()`](https://vpergim.github.io/indicaR/reference/listar_indicadores.md),
 [`info_indicador()`](https://vpergim.github.io/indicaR/reference/info_indicador.md)
 
-## Examples
+## Ejemplos
 
 ``` r
 consultar_indicador(

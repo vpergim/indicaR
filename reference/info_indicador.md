@@ -4,13 +4,13 @@ Muestra información descriptiva y estructural de un indicador disponible
 en el paquete. Es útil para conocer su contenido antes de consultar los
 datos.
 
-## Usage
+## Uso
 
 ``` r
 info_indicador(id_dataset)
 ```
 
-## Arguments
+## Argumentos
 
 - id_dataset:
 
@@ -18,7 +18,7 @@ info_indicador(id_dataset)
   identificadores disponibles pueden consultarse con
   [`listar_indicadores()`](https://vpergim.github.io/indicaR/reference/listar_indicadores.md).
 
-## Value
+## Valor
 
 Una lista con los siguientes elementos:
 
@@ -47,11 +47,11 @@ Una lista con los siguientes elementos:
       Puede incluir tanto dimensiones originales como variables derivadas
       creadas durante la normalización.
 
-## See also
+## Ver también
 
 [`listar_indicadores()`](https://vpergim.github.io/indicaR/reference/listar_indicadores.md)
 
-## Examples
+## Ejemplos
 
 ``` r
 listar_indicadores()
